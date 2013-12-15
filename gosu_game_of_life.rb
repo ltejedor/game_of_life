@@ -10,9 +10,24 @@ class GameOfLifeWindow < Gosu::Window
 		self.caption = "Game of Life"
 
 		@background_color = Gosu::Color.new(155, 155, 160)
+		@alive_color = Gosu::Color.new(12, 12, 12)
+		@dead_color = Gosu::Color.new(255, 255, 255)
+
+		# game itself
+		@rows = height/10
+		@cols = width/10
+
+		@col_width = width/@cols
+		@row_height = height/@rows
+
+		@world = World.new(@cols, @rows)
+		@game = Game.new(@world)
+		@game.world.randomly_populate
+
 	end
 
 	def update
+		@game.tick!
 	end
 
 	def draw
@@ -20,6 +35,22 @@ class GameOfLifeWindow < Gosu::Window
 							width, 0, @background_color,
 							width, height, @background_color,
 							0, height, @background_color)
+
+		@game.world.cells.each do |cell|
+			if cell.alive?
+
+				draw_quad(cell.x * @col_width, cell.y * @row_height, @alive_color,
+										(cell.x * @col_width) + (@col_width - 1), cell.y * @row_height, @alive_color,
+										(cell.x * @col_width) + (@col_width - 1), cell.y * @row_height + (@row_height - 1), @alive_color,
+										cell.x * @col_width, (cell.y * @row_height) + (@row_height - 1), @alive_color)
+
+			else
+				draw_quad(cell.x * @col_width, cell.y * @row_height, @dead_color,
+									cell.x * @col_width + (@col_width - 1), cell.y * @row_height, @dead_color,
+									cell.x * @col_width + (@col_width - 1), cell.y * @row_height + (@row_height - 1), @dead_color,
+									cell.x * @col_width, cell.y * @row_height + (@row_height - 1), @dead_color)
+			end
+		end
 	end
 
 	def needs_cursor?; true; end
