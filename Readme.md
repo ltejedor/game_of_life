@@ -11,7 +11,7 @@ The "game" is a zero-player game, meaning that its evolution is determined by it
 
 Rules:
 
-1 .Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
 
 2. Any live cell with two or three live neighbours lives on to the next generation.
 
