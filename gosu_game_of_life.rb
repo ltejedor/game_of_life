@@ -10,12 +10,12 @@ class GameOfLifeWindow < Gosu::Window
 		self.caption = "Game of Life"
 
 		@background_color = Gosu::Color.new(155, 155, 160)
-		@alive_color = Gosu::Color.new(12, 12, 12)
+		@alive_color = Gosu::Color.new(23, 192, 230)
 		@dead_color = Gosu::Color.new(255, 255, 255)
 
 		# game itself
-		@rows = height/10
-		@cols = width/10
+		@rows = height/7
+		@cols = width/7
 
 		@col_width = width/@cols
 		@row_height = height/@rows
