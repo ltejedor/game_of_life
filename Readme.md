@@ -20,3 +20,5 @@ Rules:
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 [Learn More](http://en.wikipedia.org/wiki/Conway's_Game_of_Life)
+
+This was created with the help of some [awesome videos](http://www.youtube.com/watch?v=iLXO2FLPulI)
